@@ -1,7 +1,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
   
   let ground = Ground()
   let player = Player()
@@ -12,10 +12,9 @@ class GameScene: SKScene {
   var nextEncounterSpawnPosition = CGFloat(150)
   
   override func didMove(to view: SKView) {
+    self.physicsWorld.contactDelegate = self
     self.backgroundColor = UIColor.white
     encounterManager.addEncountersToScene(gameScene: self)
-    encounterManager.encounters[0].position =
-      CGPoint(x: 1000, y: 330)
     
     ground.position = CGPoint(x: -self.size.width * 2, y: 30)
     ground.size = CGSize(width: self.size.width * 6, height: 0)
@@ -27,11 +26,15 @@ class GameScene: SKScene {
     
     self.camera = cam
     self.addChild(self.camera!)
-
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     if player.jumping { return }
+    if dead {
+      dead = false
+      self.view?.presentScene(GameScene(size: self.size))
+      return
+    }
     player.jump()
   }
   
@@ -50,11 +53,26 @@ class GameScene: SKScene {
   override func update(_ currentTime: TimeInterval) {
     player.update()
   }
+  
+  func didBegin(_ contact: SKPhysicsContact) {
+    let otherBody: SKPhysicsBody
+    let playerMask = PhysicsCategory.player.rawValue
+    if (contact.bodyA.categoryBitMask & playerMask) > 0 { otherBody = contact.bodyB }
+    else { otherBody = contact.bodyA }
+    
+    switch otherBody.categoryBitMask {
+    case PhysicsCategory.spike.rawValue:
+      if dead { return }
+      player.die()
+    default: break
+    }
+  }
 
 }
 
 enum PhysicsCategory:UInt32 {
-  case box = 1
+  case player = 1
   case ground = 2
   case ledge = 4
+  case spike = 8
 }

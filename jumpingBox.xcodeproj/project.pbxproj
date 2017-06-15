@@ -21,6 +21,8 @@
 		BC86F5501EF026180018CC06 /* EncounterA.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC86F54F1EF026180018CC06 /* EncounterA.sks */; };
 		BC86F5521EF02A210018CC06 /* EncounterB.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC86F5511EF02A210018CC06 /* EncounterB.sks */; };
 		BC86F5541EF02A460018CC06 /* EncounterC.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC86F5531EF02A460018CC06 /* EncounterC.sks */; };
+		BCC7FF1D1EF1914000557A8D /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7FF1C1EF1914000557A8D /* Spike.swift */; };
+		BCC7FF211EF19DB500557A8D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7FF201EF19DB500557A8D /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		BC86F54F1EF026180018CC06 /* EncounterA.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterA.sks; sourceTree = "<group>"; };
 		BC86F5511EF02A210018CC06 /* EncounterB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterB.sks; sourceTree = "<group>"; };
 		BC86F5531EF02A460018CC06 /* EncounterC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterC.sks; sourceTree = "<group>"; };
+		BCC7FF1C1EF1914000557A8D /* Spike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
+		BCC7FF201EF19DB500557A8D /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +82,11 @@
 				BC86F54B1EF023790018CC06 /* EncounterManager.swift */,
 				BC7973FA1EF0136300E6948A /* GameScene.swift */,
 				BC7973FC1EF0136300E6948A /* GameViewController.swift */,
+				BCC7FF201EF19DB500557A8D /* Global.swift */,
 				BC79740C1EF0152C00E6948A /* Ground.swift */,
 				BC7974101EF0213B00E6948A /* Ledge.swift */,
 				BC79740E1EF0160F00E6948A /* Player.swift */,
+				BCC7FF1C1EF1914000557A8D /* Spike.swift */,
 				BC7974011EF0136300E6948A /* Assets.xcassets */,
 				BC86F5551EF02B420018CC06 /* Encounters */,
 				BC7974031EF0136300E6948A /* LaunchScreen.storyboard */,
@@ -178,11 +184,13 @@
 			files = (
 				BC7973FB1EF0136300E6948A /* GameScene.swift in Sources */,
 				BC86F54C1EF023790018CC06 /* EncounterManager.swift in Sources */,
+				BCC7FF1D1EF1914000557A8D /* Spike.swift in Sources */,
 				BC7974111EF0213B00E6948A /* Ledge.swift in Sources */,
 				BC7973FD1EF0136300E6948A /* GameViewController.swift in Sources */,
 				BC79740D1EF0152C00E6948A /* Ground.swift in Sources */,
 				BC79740F1EF0160F00E6948A /* Player.swift in Sources */,
 				BC7973F51EF0136300E6948A /* AppDelegate.swift in Sources */,
+				BCC7FF211EF19DB500557A8D /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

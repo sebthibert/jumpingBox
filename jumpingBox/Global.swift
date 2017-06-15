@@ -1,0 +1,1 @@
+public var dead = false

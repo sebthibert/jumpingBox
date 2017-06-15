@@ -6,10 +6,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "square-dead.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "square-dead-1.png",
       "scale" : "3x"
     }
   ],
