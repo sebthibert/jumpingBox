@@ -14,11 +14,11 @@ class GameViewController: UIViewController {
   
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
-    let gameScene = GameScene()
+    let startScene = StartScene()
     let skView = self.view as! SKView
     skView.ignoresSiblingOrder = true
-    gameScene.size = view.bounds.size
-    skView.presentScene(gameScene)
+    startScene.size = view.bounds.size
+    skView.presentScene(startScene)
   }
   
   override var shouldAutorotate: Bool {

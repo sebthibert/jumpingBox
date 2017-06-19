@@ -6,9 +6,9 @@ class HUD: SKNode {
   let scoreCountText = SKLabelNode(text: "0")
   let pauseButton = SKSpriteNode()
   let playButton = SKSpriteNode()
+  let pauseButtonPosition = CGPoint(x: 305, y: 155)
   let restartButton = SKSpriteNode()
   let restartLabel = SKLabelNode(text: "Restart")
-  let pauseButtonPosition = CGPoint(x: 305, y: 155)
   
   func createHudNodes(screenSize: CGSize) {
     playButton.isHidden = true

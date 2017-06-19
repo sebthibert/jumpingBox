@@ -3,7 +3,7 @@ import SpriteKit
 class Player: SKSpriteNode {
   var initialSize = CGSize(width: 40, height: 40 )
   var textureAtlas = SKTextureAtlas(named:"Player")
-  var forwardVelocity = CGFloat(200)
+  var forwardVelocity = CGFloat(225)
   var jumpVelocity = CGFloat(600)
   var dieForwardVelocity = CGFloat(0)
   var dieUpwardVelocity = CGFloat(300)
@@ -18,12 +18,12 @@ class Player: SKSpriteNode {
     self.physicsBody?.categoryBitMask =
       PhysicsCategory.player.rawValue
     self.physicsBody?.contactTestBitMask =
-      PhysicsCategory.ground.rawValue |
       PhysicsCategory.ledge.rawValue |
+      PhysicsCategory.edge.rawValue |
       PhysicsCategory.spike.rawValue
     self.physicsBody?.collisionBitMask =
-      PhysicsCategory.ground.rawValue |
       PhysicsCategory.ledge.rawValue |
+      PhysicsCategory.edge.rawValue |
       PhysicsCategory.spike.rawValue
   }
   

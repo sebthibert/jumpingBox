@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     dead = false
     
     self.physicsWorld.contactDelegate = self
-    self.backgroundColor = UIColor.gray
+    self.backgroundColor = .gray
     encounterManager.addEncountersToScene(gameScene: self)
     
     ground.position = CGPoint(x: -self.size.width * 2, y: 30)
@@ -90,6 +90,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       if dead { return }
       player.die()
       hud.showDeadNodes()
+    case PhysicsCategory.edge.rawValue:
+      if dead || player.physicsBody!.velocity.dy > 0 { return }
+      player.die()
+      hud.showDeadNodes()
     default: break
     }
   }
@@ -97,12 +101,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   func restart() {
     self.view?.presentScene(GameScene(size: self.size))
   }
-
 }
 
 enum PhysicsCategory:UInt32 {
   case player = 1
   case ground = 2
-  case ledge = 4
-  case spike = 8
+  case spike = 4
+  case ledge = 8
+  case edge = 16
 }

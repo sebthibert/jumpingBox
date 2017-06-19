@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BC07BDFF1EF2E2BB00CA9C97 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07BDFE1EF2E2BB00CA9C97 /* HUD.swift */; };
+		BC07BE051EF810F600CA9C97 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07BE041EF810F600CA9C97 /* Edge.swift */; };
+		BC07BE091EF8163400CA9C97 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07BE081EF8163400CA9C97 /* StartScene.swift */; };
 		BC7973F51EF0136300E6948A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7973F41EF0136300E6948A /* AppDelegate.swift */; };
 		BC7973F91EF0136300E6948A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC7973F81EF0136300E6948A /* Actions.sks */; };
 		BC7973FB1EF0136300E6948A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7973FA1EF0136300E6948A /* GameScene.swift */; };
@@ -28,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		BC07BDFE1EF2E2BB00CA9C97 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		BC07BE041EF810F600CA9C97 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
+		BC07BE081EF8163400CA9C97 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		BC7973F11EF0136300E6948A /* Box Jump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Box Jump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7973F41EF0136300E6948A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC7973F81EF0136300E6948A /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 				BC7974061EF0136300E6948A /* Info.plist */,
 				BC7973F81EF0136300E6948A /* Actions.sks */,
 				BC7973F41EF0136300E6948A /* AppDelegate.swift */,
+				BC07BE041EF810F600CA9C97 /* Edge.swift */,
 				BC86F54B1EF023790018CC06 /* EncounterManager.swift */,
 				BC7973FA1EF0136300E6948A /* GameScene.swift */,
 				BC7973FC1EF0136300E6948A /* GameViewController.swift */,
@@ -90,6 +95,7 @@
 				BC7974101EF0213B00E6948A /* Ledge.swift */,
 				BC79740E1EF0160F00E6948A /* Player.swift */,
 				BCC7FF1C1EF1914000557A8D /* Spike.swift */,
+				BC07BE081EF8163400CA9C97 /* StartScene.swift */,
 				BC7974011EF0136300E6948A /* Assets.xcassets */,
 				BC86F5551EF02B420018CC06 /* Encounters */,
 				BC7974031EF0136300E6948A /* LaunchScreen.storyboard */,
@@ -185,9 +191,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC07BE051EF810F600CA9C97 /* Edge.swift in Sources */,
 				BC7973FB1EF0136300E6948A /* GameScene.swift in Sources */,
 				BC07BDFF1EF2E2BB00CA9C97 /* HUD.swift in Sources */,
 				BC86F54C1EF023790018CC06 /* EncounterManager.swift in Sources */,
+				BC07BE091EF8163400CA9C97 /* StartScene.swift in Sources */,
 				BCC7FF1D1EF1914000557A8D /* Spike.swift in Sources */,
 				BC7974111EF0213B00E6948A /* Ledge.swift in Sources */,
 				BC7973FD1EF0136300E6948A /* GameViewController.swift in Sources */,
