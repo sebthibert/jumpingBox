@@ -5,6 +5,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   let ground = Ground()
   let player = Player()
+  let hud = HUD()
   let encounterManager = EncounterManager()
   let cam = SKCameraNode()
   var playerProgress = CGFloat(0)
@@ -12,8 +13,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   var nextEncounterSpawnPosition = CGFloat(150)
   
   override func didMove(to view: SKView) {
+    dead = false
+    
     self.physicsWorld.contactDelegate = self
-    self.backgroundColor = UIColor.white
+    self.backgroundColor = UIColor.gray
     encounterManager.addEncountersToScene(gameScene: self)
     
     ground.position = CGPoint(x: -self.size.width * 2, y: 30)
@@ -26,16 +29,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     self.camera = cam
     self.addChild(self.camera!)
+    
+    hud.createHudNodes(screenSize: self.size)
+    self.camera!.addChild(hud)
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    if player.jumping { return }
-    if dead {
-      dead = false
-      self.view?.presentScene(GameScene(size: self.size))
-      return
+    for touch in (touches) {
+      let location = touch.location(in: self)
+      let nodeTouched = atPoint(location)
+      
+      if nodeTouched.name == "pauseGame" {
+        if self.view?.isPaused == true { return }
+        if dead { return }
+        nodeTouched.isHidden = true
+        hud.playButton.isHidden = false
+        self.isPaused = true
+      } else if nodeTouched.name == "playGame" {
+        if self.view?.isPaused == true { return }
+        if dead { return }
+        nodeTouched.isHidden = true
+        hud.pauseButton.isHidden = false
+        self.isPaused = false
+      } else if nodeTouched.name == "restartGame" {
+        restart()
+      } else {
+        if dead { return }
+        if player.jumping { return }
+        player.jump()
+      }
     }
-    player.jump()
   }
   
   override func didSimulatePhysics() {
@@ -51,6 +74,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   override func update(_ currentTime: TimeInterval) {
+    if self.view?.isPaused == true { return }
+    hud.setScoreDisplay(newScore: Int(playerProgress / 100))
     player.update()
   }
   
@@ -64,8 +89,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     case PhysicsCategory.spike.rawValue:
       if dead { return }
       player.die()
+      hud.showDeadNodes()
     default: break
     }
+  }
+  
+  func restart() {
+    self.view?.presentScene(GameScene(size: self.size))
   }
 
 }

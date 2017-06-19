@@ -1,7 +1,7 @@
 import SpriteKit
 
 class Player: SKSpriteNode {
-  var initialSize = CGSize(width: 30, height: 30 )
+  var initialSize = CGSize(width: 40, height: 40 )
   var textureAtlas = SKTextureAtlas(named:"Player")
   var forwardVelocity = CGFloat(200)
   var jumpVelocity = CGFloat(600)

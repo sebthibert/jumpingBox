@@ -1,7 +1,7 @@
 import SpriteKit
 
 class Ledge: SKSpriteNode {
-  var initialSize = CGSize(width: 200, height: 50)
+  var initialSize = CGSize(width: 200, height: 30)
   var textureAtlas = SKTextureAtlas(named: "Environment")
   
   init() {

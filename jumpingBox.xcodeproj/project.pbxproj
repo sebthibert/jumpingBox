@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC07BDFF1EF2E2BB00CA9C97 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07BDFE1EF2E2BB00CA9C97 /* HUD.swift */; };
 		BC7973F51EF0136300E6948A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7973F41EF0136300E6948A /* AppDelegate.swift */; };
 		BC7973F91EF0136300E6948A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC7973F81EF0136300E6948A /* Actions.sks */; };
 		BC7973FB1EF0136300E6948A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7973FA1EF0136300E6948A /* GameScene.swift */; };
@@ -26,7 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BC7973F11EF0136300E6948A /* jumpingBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jumpingBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC07BDFE1EF2E2BB00CA9C97 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		BC7973F11EF0136300E6948A /* Box Jump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Box Jump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7973F41EF0136300E6948A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC7973F81EF0136300E6948A /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		BC7973FA1EF0136300E6948A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		BC7973F21EF0136300E6948A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC7973F11EF0136300E6948A /* jumpingBox.app */,
+				BC7973F11EF0136300E6948A /* Box Jump.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,6 +86,7 @@
 				BC7973FC1EF0136300E6948A /* GameViewController.swift */,
 				BCC7FF201EF19DB500557A8D /* Global.swift */,
 				BC79740C1EF0152C00E6948A /* Ground.swift */,
+				BC07BDFE1EF2E2BB00CA9C97 /* HUD.swift */,
 				BC7974101EF0213B00E6948A /* Ledge.swift */,
 				BC79740E1EF0160F00E6948A /* Player.swift */,
 				BCC7FF1C1EF1914000557A8D /* Spike.swift */,
@@ -122,7 +125,7 @@
 			);
 			name = jumpingBox;
 			productName = jumpingBox;
-			productReference = BC7973F11EF0136300E6948A /* jumpingBox.app */;
+			productReference = BC7973F11EF0136300E6948A /* Box Jump.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7973FB1EF0136300E6948A /* GameScene.swift in Sources */,
+				BC07BDFF1EF2E2BB00CA9C97 /* HUD.swift in Sources */,
 				BC86F54C1EF023790018CC06 /* EncounterManager.swift in Sources */,
 				BCC7FF1D1EF1914000557A8D /* Spike.swift in Sources */,
 				BC7974111EF0213B00E6948A /* Ledge.swift in Sources */,
@@ -319,7 +323,7 @@
 				INFOPLIST_FILE = jumpingBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "M-S.jumpingBox";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Box Jump";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -332,7 +336,7 @@
 				INFOPLIST_FILE = jumpingBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "M-S.jumpingBox";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Box Jump";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
