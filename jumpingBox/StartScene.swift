@@ -4,10 +4,11 @@ import GameplayKit
 class StartScene: SKScene {
   var buttonAtlas = SKTextureAtlas(named: "HUD")
   var playerAtlas = SKTextureAtlas(named: "Player")
-  let titleLabel = SKLabelNode(text: "JUMP BOX!")
-  let startButton = SKSpriteNode()
+  let titleLabel = SKLabelNode(text: "JUMBOX!")
+  let startButton = Button()
   let startLabel = SKLabelNode(text: "Start")
   let player = Player()
+  let hud = HUD()
   
   override func didMove(to view: SKView) {
     self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -18,7 +19,6 @@ class StartScene: SKScene {
     titleLabel.position = CGPoint(x: 0, y: 120)
     self.addChild(titleLabel)
     
-    startButton.texture = buttonAtlas.textureNamed("button")
     startButton.name = "startGame"
     startButton.size = CGSize(width: 170, height: 60)
     startButton.position = CGPoint(x: 0, y: -135)
@@ -38,6 +38,7 @@ class StartScene: SKScene {
     self.addChild(player)
     
     jumpAction()
+    hud.pulseAction(startButton)
   }
   
   func jumpAction() {

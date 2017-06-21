@@ -1,7 +1,7 @@
 import SpriteKit
 
 class Player: SKSpriteNode {
-  var initialSize = CGSize(width: 40, height: 40 )
+  var initialSize = CGSize(width: 45, height: 45 )
   var textureAtlas = SKTextureAtlas(named:"Player")
   var forwardVelocity = CGFloat(225)
   var jumpVelocity = CGFloat(600)
@@ -10,7 +10,7 @@ class Player: SKSpriteNode {
   var jumping = false
   
   init() {
-    super.init(texture: nil, color: .blue, size: initialSize)
+    super.init(texture: nil, color: .clear, size: initialSize)
     self.name = "player"
     self.texture = textureAtlas.textureNamed("square")
     self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height))

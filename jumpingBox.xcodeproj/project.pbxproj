@@ -24,6 +24,7 @@
 		BC86F5501EF026180018CC06 /* EncounterA.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC86F54F1EF026180018CC06 /* EncounterA.sks */; };
 		BC86F5521EF02A210018CC06 /* EncounterB.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC86F5511EF02A210018CC06 /* EncounterB.sks */; };
 		BC86F5541EF02A460018CC06 /* EncounterC.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC86F5531EF02A460018CC06 /* EncounterC.sks */; };
+		BCC014AE1EF91D5D00AD4B20 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC014AD1EF91D5D00AD4B20 /* Button.swift */; };
 		BCC7FF1D1EF1914000557A8D /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7FF1C1EF1914000557A8D /* Spike.swift */; };
 		BCC7FF211EF19DB500557A8D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7FF201EF19DB500557A8D /* Global.swift */; };
 /* End PBXBuildFile section */
@@ -32,7 +33,7 @@
 		BC07BDFE1EF2E2BB00CA9C97 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		BC07BE041EF810F600CA9C97 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		BC07BE081EF8163400CA9C97 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
-		BC7973F11EF0136300E6948A /* Box Jump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Box Jump.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC7973F11EF0136300E6948A /* Jumbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7973F41EF0136300E6948A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC7973F81EF0136300E6948A /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		BC7973FA1EF0136300E6948A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		BC86F54F1EF026180018CC06 /* EncounterA.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterA.sks; sourceTree = "<group>"; };
 		BC86F5511EF02A210018CC06 /* EncounterB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterB.sks; sourceTree = "<group>"; };
 		BC86F5531EF02A460018CC06 /* EncounterC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterC.sks; sourceTree = "<group>"; };
+		BCC014AD1EF91D5D00AD4B20 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		BCC7FF1C1EF1914000557A8D /* Spike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
 		BCC7FF201EF19DB500557A8D /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +76,7 @@
 		BC7973F21EF0136300E6948A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC7973F11EF0136300E6948A /* Box Jump.app */,
+				BC7973F11EF0136300E6948A /* Jumbox.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,6 +87,7 @@
 				BC7974061EF0136300E6948A /* Info.plist */,
 				BC7973F81EF0136300E6948A /* Actions.sks */,
 				BC7973F41EF0136300E6948A /* AppDelegate.swift */,
+				BCC014AD1EF91D5D00AD4B20 /* Button.swift */,
 				BC07BE041EF810F600CA9C97 /* Edge.swift */,
 				BC86F54B1EF023790018CC06 /* EncounterManager.swift */,
 				BC7973FA1EF0136300E6948A /* GameScene.swift */,
@@ -131,7 +134,7 @@
 			);
 			name = jumpingBox;
 			productName = jumpingBox;
-			productReference = BC7973F11EF0136300E6948A /* Box Jump.app */;
+			productReference = BC7973F11EF0136300E6948A /* Jumbox.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -202,6 +205,7 @@
 				BC79740D1EF0152C00E6948A /* Ground.swift in Sources */,
 				BC79740F1EF0160F00E6948A /* Player.swift in Sources */,
 				BC7973F51EF0136300E6948A /* AppDelegate.swift in Sources */,
+				BCC014AE1EF91D5D00AD4B20 /* Button.swift in Sources */,
 				BCC7FF211EF19DB500557A8D /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,7 +335,7 @@
 				INFOPLIST_FILE = jumpingBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "M-S.jumpingBox";
-				PRODUCT_NAME = "Box Jump";
+				PRODUCT_NAME = Jumbox;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -344,7 +348,7 @@
 				INFOPLIST_FILE = jumpingBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "M-S.jumpingBox";
-				PRODUCT_NAME = "Box Jump";
+				PRODUCT_NAME = Jumbox;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -3,11 +3,14 @@ import SpriteKit
 class HUD: SKNode {
   var textureAtlas = SKTextureAtlas(named:"HUD")
   let scoreLabel = SKLabelNode(text: "Score: ")
+  let finalScoreLabel = SKLabelNode()
   let scoreCountText = SKLabelNode(text: "0")
+  let highscoreLabel = SKLabelNode()
   let pauseButton = SKSpriteNode()
   let playButton = SKSpriteNode()
   let pauseButtonPosition = CGPoint(x: 305, y: 155)
-  let restartButton = SKSpriteNode()
+  let scoreTable = Button()
+  let restartButton = Button()
   let restartLabel = SKLabelNode(text: "Restart")
   
   func createHudNodes(screenSize: CGSize) {
@@ -36,11 +39,13 @@ class HUD: SKNode {
     self.addChild(scoreLabel)
     self.addChild(scoreCountText)
     
-    restartButton.texture = textureAtlas.textureNamed("button")
+    scoreTable.size = CGSize(width: 450, height: 150)
+    scoreTable.position = CGPoint(x: 0, y: 50)
+    scoreTable.zPosition = 4
+    
     restartButton.name = "restartGame"
     restartButton.size = CGSize(width: 200, height: 70)
-    restartButton.color = .white
-    restartButton.position = CGPoint(x: 0, y: 0)
+    restartButton.position = CGPoint(x: 0, y: scoreTable.frame.minY - 50)
     restartButton.zPosition = 4
     
     restartLabel.fontName = font
@@ -51,6 +56,13 @@ class HUD: SKNode {
     restartButton.addChild(restartLabel)
   }
   
+  func pulseAction(_ node: SKSpriteNode) {
+    let scaleUp = SKAction.scale(to: 1.03, duration: 0.6)
+    let scaleDown = SKAction.scale(to: 1, duration: 0.6)
+    let scaleSequence = SKAction.sequence([scaleUp, scaleDown])
+    node.run(SKAction.repeatForever(scaleSequence))
+  }
+  
   func setScoreDisplay(newScore: Int) {
     let formatter = NumberFormatter()
     let number = NSNumber(value: newScore)
@@ -58,7 +70,27 @@ class HUD: SKNode {
   }
   
   func showDeadNodes() {
+    self.removeAllChildren()
+    pulseAction(restartButton)
     self.addChild(restartButton)
+    
+    highscoreLabel.text = "Highscore: " + String(playerScore)
+    highscoreLabel.fontName = font
+    highscoreLabel.fontSize = CGFloat(fontSizeMedium)
+    highscoreLabel.position = CGPoint(x: 0, y: scoreTable.frame.maxY - 50)
+    highscoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
+    highscoreLabel.zPosition = 5
+    
+    finalScoreLabel.text = "Score: " + String(playerScore)
+    finalScoreLabel.fontName = font
+    finalScoreLabel.fontSize = CGFloat(fontSizeMedium)
+    finalScoreLabel.position = CGPoint(x: 0, y: highscoreLabel.frame.minY - 30)
+    finalScoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
+    finalScoreLabel.zPosition = 5
+    
+    self.addChild(scoreTable)
+    self.addChild(highscoreLabel)
+    self.addChild(finalScoreLabel)
   }
 }
 
