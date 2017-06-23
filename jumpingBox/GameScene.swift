@@ -94,6 +94,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       if dead || player.physicsBody!.velocity.dy > 0 { return }
       player.die()
       hud.showDeadNodes()
+    case PhysicsCategory.coin.rawValue:
+      if let coin = otherBody.node as? Coin {
+        coin.collect()
+        coinsCollected += 1
+        hud.setCoinCountDisplay(newScore: coinsCollected)
+      }
     default: break
     }
   }
@@ -106,7 +112,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 enum PhysicsCategory:UInt32 {
   case player = 1
   case ground = 2
-  case spike = 4
-  case ledge = 8
-  case edge = 16
+  case coin = 4
+  case spike = 8
+  case ledge = 16
+  case edge = 32
 }

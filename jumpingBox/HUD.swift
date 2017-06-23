@@ -2,10 +2,13 @@ import SpriteKit
 
 class HUD: SKNode {
   var textureAtlas = SKTextureAtlas(named:"HUD")
+  var coinAtlas = SKTextureAtlas(named: "Environment")
+  let coinIcon = SKSpriteNode()
   let scoreLabel = SKLabelNode(text: "Score: ")
   let finalScoreLabel = SKLabelNode()
   let scoreCountText = SKLabelNode(text: "0")
   let highscoreLabel = SKLabelNode()
+  let coinCountLabel = SKLabelNode(text: String(describing: coinsCollected))
   let pauseButton = SKSpriteNode()
   let playButton = SKSpriteNode()
   let pauseButtonPosition = CGPoint(x: 335, y: 180)
@@ -28,7 +31,7 @@ class HUD: SKNode {
     
     scoreLabel.fontName = font
     scoreLabel.fontSize = fontSizeSmall
-    scoreLabel.position = CGPoint(x: -355, y: 180)
+    scoreLabel.position = CGPoint(x: -355, y: 185)
     scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
     scoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
     scoreCountText.fontName = font
@@ -39,21 +42,16 @@ class HUD: SKNode {
     self.addChild(scoreLabel)
     self.addChild(scoreCountText)
     
-    scoreTable.size = CGSize(width: 450, height: 150)
-    scoreTable.position = CGPoint(x: 0, y: 50)
-    scoreTable.zPosition = 4
-    
-    restartButton.name = "restartGame"
-    restartButton.size = CGSize(width: 200, height: 70)
-    restartButton.position = CGPoint(x: 0, y: scoreTable.frame.minY - 50)
-    restartButton.zPosition = 4
-    
-    restartLabel.fontName = font
-    restartLabel.fontSize = fontSizeMedium
-    restartLabel.verticalAlignmentMode = .center
-    restartLabel.name = "restartGame"
-    restartLabel.zPosition = 5
-    restartButton.addChild(restartLabel)
+    coinIcon.texture = coinAtlas.textureNamed("coin")
+    coinIcon.size = CGSize(width: 20, height: 20)
+    coinIcon.position = CGPoint(x: scoreLabel.frame.minX + (coinIcon.frame.width / 2), y: scoreLabel.frame.minY - 15)
+    coinCountLabel.fontName = font
+    coinCountLabel.fontSize = fontSizeSmall
+    coinCountLabel.position = CGPoint(x: coinIcon.frame.maxX + 5, y: coinIcon.frame.midY)
+    coinCountLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+    coinCountLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
+    self.addChild(coinIcon)
+    self.addChild(coinCountLabel)
   }
   
   func pulseAction(_ node: SKSpriteNode) {
@@ -69,8 +67,31 @@ class HUD: SKNode {
     if let scoreString = formatter.string(from: number) { scoreCountText.text = scoreString }
   }
   
+  func setCoinCountDisplay(newScore: Int) {
+    let formatter = NumberFormatter()
+    let number = NSNumber(value: newScore)
+    if let coinString = formatter.string(from: number) { coinCountLabel.text = coinString }
+  }
+  
   func showDeadNodes() {
     self.removeAllChildren()
+    
+    scoreTable.size = CGSize(width: 375, height: 210)
+    scoreTable.position = CGPoint(x: 0, y: 60)
+    scoreTable.zPosition = 4
+    
+    restartButton.name = "restartGame"
+    restartButton.size = CGSize(width: 200, height: 70)
+    restartButton.position = CGPoint(x: 0, y: scoreTable.frame.minY - 50)
+    restartButton.zPosition = 4
+    
+    restartLabel.fontName = font
+    restartLabel.fontSize = fontSizeMedium
+    restartLabel.verticalAlignmentMode = .center
+    restartLabel.name = "restartGame"
+    restartLabel.zPosition = 5
+    restartButton.addChild(restartLabel)
+    
     pulseAction(restartButton)
     self.addChild(restartButton)
     
@@ -85,13 +106,22 @@ class HUD: SKNode {
     finalScoreLabel.text = "Score: " + String(Int(playerProgress / 100))
     finalScoreLabel.fontName = font
     finalScoreLabel.fontSize = fontSizeMedium
-    finalScoreLabel.position = CGPoint(x: 0, y: highscoreLabel.frame.minY - 30)
+    finalScoreLabel.position = CGPoint(x: highscoreLabel.frame.minX + (finalScoreLabel.frame.width / 2), y: highscoreLabel.frame.minY - 30)
     finalScoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
     finalScoreLabel.zPosition = 5
+    
+    coinIcon.size = CGSize(width: 30, height: 30)
+    coinIcon.position = CGPoint(x: highscoreLabel.frame.minX + (coinIcon.frame.width / 2), y: finalScoreLabel.frame.minY - 40)
+    coinIcon.zPosition = 5
+    coinCountLabel.fontSize = fontSizeMedium
+    coinCountLabel.position = CGPoint(x: coinIcon.frame.maxX + 15, y: coinIcon.frame.midY)
+    coinCountLabel.zPosition = 5
     
     self.addChild(scoreTable)
     self.addChild(highscoreLabel)
     self.addChild(finalScoreLabel)
+    self.addChild(coinIcon)
+    self.addChild(coinCountLabel)
   }
 }
 

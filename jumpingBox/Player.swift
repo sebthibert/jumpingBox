@@ -20,6 +20,7 @@ class Player: SKSpriteNode {
     self.physicsBody?.contactTestBitMask =
       PhysicsCategory.ledge.rawValue |
       PhysicsCategory.edge.rawValue |
+      PhysicsCategory.coin.rawValue |
       PhysicsCategory.spike.rawValue
     self.physicsBody?.collisionBitMask =
       PhysicsCategory.ledge.rawValue |
@@ -44,6 +45,9 @@ class Player: SKSpriteNode {
       UserDefaults.standard.set(playerProgress / 100, forKey:"HighScore")
       UserDefaults.standard.synchronize()
     }
+    
+    UserDefaults.standard.set(coinsCollected, forKey: "CoinsCollected")
+    UserDefaults.standard.synchronize()
   }
   
   func update() {
