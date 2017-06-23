@@ -11,7 +11,7 @@ class HUD: SKNode {
   let coinCountLabel = SKLabelNode(text: String(describing: coinsCollected))
   let pauseButton = SKSpriteNode()
   let playButton = SKSpriteNode()
-  let pauseButtonPosition = CGPoint(x: 335, y: 180)
+  let pauseButtonPosition = CGPoint(x: 305, y: 155)
   let scoreTable = Button()
   let restartButton = Button()
   let restartLabel = SKLabelNode(text: "Restart")
@@ -31,7 +31,7 @@ class HUD: SKNode {
     
     scoreLabel.fontName = font
     scoreLabel.fontSize = fontSizeSmall
-    scoreLabel.position = CGPoint(x: -355, y: 185)
+    scoreLabel.position = CGPoint(x: -325, y: 170)
     scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
     scoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
     scoreCountText.fontName = font
