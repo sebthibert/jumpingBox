@@ -1,6 +1,10 @@
+import GameKit
+
 public var dead = false
-public var playerScore = 0
-public let fontSizeSmall = 25
-public let fontSizeMedium = 40
-public let fontSizeLarge = 60
+public var playerProgress = CGFloat(0)
+public var highScore = UserDefaults.standard.object(forKey: "HighScore") as? CGFloat ?? 0
+public var coinsCollected = UserDefaults.standard.object(forKey: "CoinsCollected") as? Int ?? 0
+public let fontSizeSmall = CGFloat(25)
+public let fontSizeMedium = CGFloat(40)
+public let fontSizeLarge = CGFloat(60)
 public let font = "AvenirNext-BoldItalic"

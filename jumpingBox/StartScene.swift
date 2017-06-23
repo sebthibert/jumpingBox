@@ -15,7 +15,7 @@ class StartScene: SKScene {
     self.backgroundColor = .gray
     
     titleLabel.fontName = font
-    titleLabel.fontSize = CGFloat(fontSizeLarge)
+    titleLabel.fontSize = fontSizeLarge
     titleLabel.position = CGPoint(x: 0, y: 120)
     self.addChild(titleLabel)
     
@@ -25,7 +25,7 @@ class StartScene: SKScene {
     startButton.zPosition = 4
     
     startLabel.fontName = font
-    startLabel.fontSize = CGFloat(fontSizeMedium)
+    startLabel.fontSize = fontSizeMedium
     startLabel.verticalAlignmentMode = .center
     startLabel.name = "startGame"
     startLabel.zPosition = 5

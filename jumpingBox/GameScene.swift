@@ -8,12 +8,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   let hud = HUD()
   let encounterManager = EncounterManager()
   let cam = SKCameraNode()
-  var playerProgress = CGFloat(0)
   let initialPlayerPosition = CGPoint(x: 75, y: 200)
   var nextEncounterSpawnPosition = CGFloat(150)
   
   override func didMove(to view: SKView) {
     dead = false
+    playerProgress = 0
     
     self.physicsWorld.contactDelegate = self
     self.backgroundColor = .gray
@@ -75,8 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   override func update(_ currentTime: TimeInterval) {
     if self.view?.isPaused == true { return }
-    playerScore = Int(playerProgress / 100)
-    hud.setScoreDisplay(newScore: playerScore)
+    hud.setScoreDisplay(newScore: Int(playerProgress / 100))
     player.update()
   }
   

@@ -39,6 +39,11 @@ class Player: SKSpriteNode {
     self.physicsBody?.velocity.dx = 0
     self.physicsBody?.velocity.dy = self.dieUpwardVelocity
     self.physicsBody?.collisionBitMask = 0
+    
+    if playerProgress / 100 > highScore {
+      UserDefaults.standard.set(playerProgress / 100, forKey:"HighScore")
+      UserDefaults.standard.synchronize()
+    }
   }
   
   func update() {
