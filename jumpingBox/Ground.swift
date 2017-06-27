@@ -30,7 +30,7 @@ class Ground: SKSpriteNode {
     jumpWidth = tileSize.width * floor(tileCount / 3)
   }
   
-  func checkForReposition(playerProgress:CGFloat) {
+  func checkForReposition(playerProgress: CGFloat) {
     let groundJumpPosition = jumpWidth * jumpCount
     
     if playerProgress >= groundJumpPosition {

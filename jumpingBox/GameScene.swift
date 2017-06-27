@@ -13,7 +13,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   override func didMove(to view: SKView) {
     dead = false
-    playerProgress = 0
     
     self.physicsWorld.contactDelegate = self
     self.backgroundColor = .gray
@@ -24,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     ground.createChildren()
     self.addChild(ground)
     
-    player.position = initialPlayerPosition
+    if !newLife { player.position = initialPlayerPosition } else { player.position = playerDeathPosition }
     self.addChild(player)
     
     self.camera = cam
@@ -52,7 +51,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hud.pauseButton.isHidden = false
         self.isPaused = false
       } else if nodeTouched.name == "restartGame" {
-        restart()
+        restart(resume: false)
+      } else if nodeTouched.name == "newLife" {
+        if coinsCollected >= 25 {
+          coinsCollected -= 25
+          restart(resume: true)
+        } else {
+          hud.notEnoughCoins()
+        }
       } else {
         if dead { return }
         if player.jumping { return }
@@ -65,6 +71,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     self.camera!.position = CGPoint(x: player.position.x + 300, y: ground.position.y + 160)
     playerProgress = player.position.x - initialPlayerPosition.x
     ground.checkForReposition(playerProgress: playerProgress)
+    
+    if newLife {
+      nextEncounterSpawnPosition = player.position.x + 150
+      newLife = false
+    }
 
     if player.position.x > nextEncounterSpawnPosition {
       encounterManager.placeNextEncounter(
@@ -104,7 +115,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
   }
   
-  func restart() {
+  func restart(resume: Bool) {
+    newLife = resume
     self.view?.presentScene(GameScene(size: self.size))
   }
 }

@@ -35,6 +35,7 @@ class Player: SKSpriteNode {
   }
   
   func die() {
+    playerDeathPosition = self.position
     dead = true
     self.texture = textureAtlas.textureNamed("square-dead")
     self.physicsBody?.velocity.dx = 0

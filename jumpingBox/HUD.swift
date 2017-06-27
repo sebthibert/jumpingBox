@@ -15,6 +15,9 @@ class HUD: SKNode {
   let scoreTable = Button()
   let restartButton = Button()
   let restartLabel = SKLabelNode(text: "Restart")
+  let newLife = SKSpriteNode()
+  let newLifeLabel = SKLabelNode(text: "25")
+  let newLifeCoin = SKSpriteNode()
   
   func createHudNodes(screenSize: CGSize) {
     playButton.isHidden = true
@@ -61,6 +64,14 @@ class HUD: SKNode {
     node.run(SKAction.repeatForever(scaleSequence))
   }
   
+  func wiggleAction(_ node: SKSpriteNode) {
+    let rotateLeft = SKAction.rotate(byAngle: 0.15, duration: 0.1)
+    let rotateRight = SKAction.rotate(byAngle: -0.15, duration: 0.1)
+    let wait = SKAction.wait(forDuration: 3)
+    let rotateSequence = SKAction.sequence([rotateLeft, rotateRight, rotateRight, rotateLeft, rotateLeft, rotateRight, rotateRight, rotateLeft, wait])
+    node.run(SKAction.repeatForever(rotateSequence))
+  }
+  
   func setScoreDisplay(newScore: Int) {
     let formatter = NumberFormatter()
     let number = NSNumber(value: newScore)
@@ -71,6 +82,13 @@ class HUD: SKNode {
     let formatter = NumberFormatter()
     let number = NSNumber(value: newScore)
     if let coinString = formatter.string(from: number) { coinCountLabel.text = coinString }
+  }
+  
+  func notEnoughCoins() {
+    let scaleUp = SKAction.scale(to: 1.5, duration: 0.2)
+    let scaleDown = SKAction.scale(to: 1, duration: 0.2)
+    let scaleSequence = SKAction.sequence([scaleUp, scaleDown])
+    coinIcon.run(scaleSequence)
   }
   
   func showDeadNodes() {
@@ -117,11 +135,31 @@ class HUD: SKNode {
     coinCountLabel.position = CGPoint(x: coinIcon.frame.maxX + 15, y: coinIcon.frame.midY)
     coinCountLabel.zPosition = 5
     
+    newLife.texture = textureAtlas.textureNamed("heart")
+    newLife.size = CGSize(width: 50, height: 50)
+    newLife.position = CGPoint(x: restartButton.frame.maxX + 40, y: restartButton.frame.midY)
+    newLife.name = "newLife"
+    newLife.zPosition = 5
+    
+    newLifeLabel.fontName = font
+    newLifeLabel.fontSize = fontSizeSmall
+    newLifeLabel.position = CGPoint(x: newLife.frame.maxX + 25, y: newLife.frame.midY)
+    newLifeLabel.zPosition = 5
+    
+    newLifeCoin.texture = coinAtlas.textureNamed("coin")
+    newLifeCoin.size = CGSize(width: 15, height: 15)
+    newLifeCoin.position = CGPoint(x: newLifeLabel.frame.midX, y: newLifeLabel.frame.minY - 15)
+    
     self.addChild(scoreTable)
     self.addChild(highscoreLabel)
     self.addChild(finalScoreLabel)
     self.addChild(coinIcon)
     self.addChild(coinCountLabel)
+    self.addChild(newLifeLabel)
+    self.addChild(newLifeCoin)
+    
+    wiggleAction(newLife)
+    self.addChild(newLife)
   }
 }
 
