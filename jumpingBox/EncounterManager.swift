@@ -1,8 +1,8 @@
 import SpriteKit
 
 class EncounterManager {
-  let encounterNames:[String] = ["EncounterA", "EncounterB", "EncounterC"]
-  var encounters:[SKNode] = []
+  let encounterNames = ["EncounterA", "EncounterB", "EncounterC"]
+  var encounters: [SKNode] = []
   var currentEncounterIndex: Int?
   var previousEncounterIndex: Int?
   

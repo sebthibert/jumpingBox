@@ -23,9 +23,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     ground.createChildren()
     self.addChild(ground)
     
-    if !newLife { player.position = initialPlayerPosition } else { player.position = playerDeathPosition }
-    self.addChild(player)
+    if !resuming { player.position = initialPlayerPosition } else { player.position = playerDeathPosition }
     player.rotateAction()
+    self.addChild(player)
     
     self.camera = cam
     self.addChild(self.camera!)
@@ -41,13 +41,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       
       if nodeTouched.name == "pauseGame" {
         if self.view?.isPaused == true { return }
-        if dead { return }
         nodeTouched.isHidden = true
         hud.playButton.isHidden = false
         self.isPaused = true
       } else if nodeTouched.name == "playGame" {
         if self.view?.isPaused == true { return }
-        if dead { return }
         nodeTouched.isHidden = true
         hud.pauseButton.isHidden = false
         self.isPaused = false
@@ -61,8 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
           hud.notEnoughCoins()
         }
       } else {
-        if dead { return }
-        if player.jumping { return }
+        if player.physicsBody?.velocity.dy != 0 { return }
         player.jump()
       }
     }
@@ -73,14 +70,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     playerProgress = player.position.x - initialPlayerPosition.x
     ground.checkForReposition(playerProgress: playerProgress)
     
-    if newLife {
+    if resuming {
       nextEncounterSpawnPosition = player.position.x + 150
-      newLife = false
+      resuming = false
     }
 
     if player.position.x > nextEncounterSpawnPosition {
-      encounterManager.placeNextEncounter(
-        currentXPos: nextEncounterSpawnPosition)
+      encounterManager.placeNextEncounter(currentXPos: nextEncounterSpawnPosition)
       nextEncounterSpawnPosition += 900
     }
   }
@@ -117,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   func restart(resume: Bool) {
-    newLife = resume
+    resuming = resume
     self.view?.presentScene(GameScene(size: self.size))
   }
 }

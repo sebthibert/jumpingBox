@@ -7,35 +7,20 @@ class Player: SKSpriteNode {
   var jumpVelocity = CGFloat(600)
   var dieForwardVelocity = CGFloat(0)
   var dieUpwardVelocity = CGFloat(300)
-  var jumping = false
   
   init() {
     super.init(texture: nil, color: .clear, size: initialSize)
-    self.name = "player"
     self.texture = textureAtlas.textureNamed("square")
     self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height))
     self.physicsBody?.affectedByGravity = true
-    self.physicsBody?.categoryBitMask =
-      PhysicsCategory.player.rawValue
-    self.physicsBody?.contactTestBitMask =
-      PhysicsCategory.ledge.rawValue |
-      PhysicsCategory.edge.rawValue |
-      PhysicsCategory.coin.rawValue |
-      PhysicsCategory.spike.rawValue
-    self.physicsBody?.collisionBitMask =
-      PhysicsCategory.ledge.rawValue |
-      PhysicsCategory.edge.rawValue |
-      PhysicsCategory.spike.rawValue
+    self.physicsBody?.categoryBitMask = PhysicsCategory.player.rawValue
+    self.physicsBody?.contactTestBitMask = PhysicsCategory.ledge.rawValue | PhysicsCategory.edge.rawValue | PhysicsCategory.coin.rawValue | PhysicsCategory.spike.rawValue
+    self.physicsBody?.collisionBitMask = PhysicsCategory.ledge.rawValue | PhysicsCategory.edge.rawValue | PhysicsCategory.spike.rawValue
   }
   
   func jump() {
     self.physicsBody?.velocity.dy = self.jumpVelocity
     rotateAction()
-  }
-  
-  func rotateAction() {
-    let rotateAction = SKAction.rotate(byAngle: CGFloat(-.pi/0.5), duration: 0.6)
-    self.run(rotateAction)
   }
   
   func die() {
@@ -45,7 +30,11 @@ class Player: SKSpriteNode {
     self.physicsBody?.velocity.dx = 0
     self.physicsBody?.velocity.dy = self.dieUpwardVelocity
     self.physicsBody?.collisionBitMask = 0
+    setHighscoreAndCoinsCollected()
     
+  }
+  
+  func setHighscoreAndCoinsCollected() {
     if playerProgress / 100 > highScore {
       UserDefaults.standard.set(playerProgress / 100, forKey:"HighScore")
       UserDefaults.standard.synchronize()
@@ -55,15 +44,19 @@ class Player: SKSpriteNode {
     UserDefaults.standard.synchronize()
   }
   
+  func rotateAction() {
+    let rotateAction = SKAction.rotate(byAngle: CGFloat(-.pi/0.5), duration: 0.6)
+    self.run(rotateAction)
+  }
+  
   func update() {
     if dead { return }
     self.physicsBody?.allowsRotation = false
     self.physicsBody?.velocity.dx = self.forwardVelocity
+    
     if self.physicsBody?.velocity.dy != 0 {
-      jumping = true
       self.texture = textureAtlas.textureNamed("square-jump")
     } else {
-      jumping = false
       self.texture = textureAtlas.textureNamed("square")
     }
   }

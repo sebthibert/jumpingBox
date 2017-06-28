@@ -30,15 +30,14 @@ class StartScene: SKScene {
     startLabel.name = "startGame"
     startLabel.zPosition = 5
     startButton.addChild(startLabel)
+    hud.pulseAction(startButton)
     self.addChild(startButton)
     
     player.size = CGSize(width: 130, height: 130)
     player.position = CGPoint(x: 0, y: -25)
     player.physicsBody?.affectedByGravity = false
-    self.addChild(player)
-    
     jumpAction()
-    hud.pulseAction(startButton)
+    self.addChild(player)
   }
   
   func jumpAction() {

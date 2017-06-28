@@ -2,13 +2,11 @@ import SpriteKit
 
 class Spike: SKSpriteNode {
   var initialSize = CGSize(width: 30, height: 30)
-  var textureAtlas = SKTextureAtlas(named: "Environment")
+  var textureSprite = SKTextureAtlas(named: "Environment").textureNamed("spike")
   
   init() {
-    super.init(texture: nil, color: .clear, size: initialSize)
-    self.name = "spike"
-    self.texture = textureAtlas.textureNamed("spike")
-    self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height))
+    super.init(texture: textureSprite, color: .clear, size: initialSize)
+    self.physicsBody = SKPhysicsBody(texture: textureSprite, size: self.size)
     self.physicsBody?.isDynamic = false
     self.physicsBody?.affectedByGravity = false
     self.physicsBody?.categoryBitMask = PhysicsCategory.spike.rawValue

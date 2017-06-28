@@ -12,7 +12,6 @@
 		BC07BE091EF8163400CA9C97 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07BE081EF8163400CA9C97 /* StartScene.swift */; };
 		BC628B2F1EFD4D2000B5F6EA /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628B2E1EFD4D2000B5F6EA /* Coin.swift */; };
 		BC7973F51EF0136300E6948A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7973F41EF0136300E6948A /* AppDelegate.swift */; };
-		BC7973F91EF0136300E6948A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC7973F81EF0136300E6948A /* Actions.sks */; };
 		BC7973FB1EF0136300E6948A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7973FA1EF0136300E6948A /* GameScene.swift */; };
 		BC7973FD1EF0136300E6948A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7973FC1EF0136300E6948A /* GameViewController.swift */; };
 		BC7974001EF0136300E6948A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7973FE1EF0136300E6948A /* Main.storyboard */; };
@@ -37,7 +36,6 @@
 		BC628B2E1EFD4D2000B5F6EA /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		BC7973F11EF0136300E6948A /* Jumbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7973F41EF0136300E6948A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC7973F81EF0136300E6948A /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		BC7973FA1EF0136300E6948A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BC7973FC1EF0136300E6948A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		BC7973FF1EF0136300E6948A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC77A1E81F03C80C00B02B72 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				BC7973FA1EF0136300E6948A /* GameScene.swift */,
+				BC07BE081EF8163400CA9C97 /* StartScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		BC7973E81EF0136300E6948A = {
 			isa = PBXGroup;
 			children = (
@@ -87,13 +94,11 @@
 			isa = PBXGroup;
 			children = (
 				BC7974061EF0136300E6948A /* Info.plist */,
-				BC7973F81EF0136300E6948A /* Actions.sks */,
 				BC7973F41EF0136300E6948A /* AppDelegate.swift */,
 				BCC014AD1EF91D5D00AD4B20 /* Button.swift */,
 				BC628B2E1EFD4D2000B5F6EA /* Coin.swift */,
 				BC07BE041EF810F600CA9C97 /* Edge.swift */,
 				BC86F54B1EF023790018CC06 /* EncounterManager.swift */,
-				BC7973FA1EF0136300E6948A /* GameScene.swift */,
 				BC7973FC1EF0136300E6948A /* GameViewController.swift */,
 				BCC7FF201EF19DB500557A8D /* Global.swift */,
 				BC79740C1EF0152C00E6948A /* Ground.swift */,
@@ -101,11 +106,11 @@
 				BC7974101EF0213B00E6948A /* Ledge.swift */,
 				BC79740E1EF0160F00E6948A /* Player.swift */,
 				BCC7FF1C1EF1914000557A8D /* Spike.swift */,
-				BC07BE081EF8163400CA9C97 /* StartScene.swift */,
 				BC7974011EF0136300E6948A /* Assets.xcassets */,
 				BC86F5551EF02B420018CC06 /* Encounters */,
 				BC7974031EF0136300E6948A /* LaunchScreen.storyboard */,
 				BC7973FE1EF0136300E6948A /* Main.storyboard */,
+				BC77A1E81F03C80C00B02B72 /* Scenes */,
 			);
 			path = jumpingBox;
 			sourceTree = "<group>";
@@ -186,7 +191,6 @@
 				BC86F5541EF02A460018CC06 /* EncounterC.sks in Resources */,
 				BC7974021EF0136300E6948A /* Assets.xcassets in Resources */,
 				BC7974051EF0136300E6948A /* LaunchScreen.storyboard in Resources */,
-				BC7973F91EF0136300E6948A /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

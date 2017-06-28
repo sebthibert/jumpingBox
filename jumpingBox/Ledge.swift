@@ -2,12 +2,10 @@ import SpriteKit
 
 class Ledge: SKSpriteNode {
   var initialSize = CGSize(width: 200, height: 30)
-  var textureAtlas = SKTextureAtlas(named: "Environment")
+  var textureSprite = SKTextureAtlas(named: "Environment").textureNamed("ledge")
   
   init() {
-    super.init(texture: nil, color: .clear, size: initialSize)
-    self.name = "ledge"
-    self.texture = textureAtlas.textureNamed("ledge")
+    super.init(texture: textureSprite, color: .clear, size: initialSize)
     self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height))
     self.physicsBody?.isDynamic = false
     self.physicsBody?.affectedByGravity = false
