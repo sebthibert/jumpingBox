@@ -27,6 +27,7 @@
 		BCC014AE1EF91D5D00AD4B20 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC014AD1EF91D5D00AD4B20 /* Button.swift */; };
 		BCC7FF1D1EF1914000557A8D /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7FF1C1EF1914000557A8D /* Spike.swift */; };
 		BCC7FF211EF19DB500557A8D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7FF201EF19DB500557A8D /* Global.swift */; };
+		BCD07C991F0405430040D9C4 /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD07C981F0405430040D9C4 /* ShopScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		BCC014AD1EF91D5D00AD4B20 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		BCC7FF1C1EF1914000557A8D /* Spike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
 		BCC7FF201EF19DB500557A8D /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		BCD07C981F0405430040D9C4 /* ShopScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				BC7973FA1EF0136300E6948A /* GameScene.swift */,
 				BC07BE081EF8163400CA9C97 /* StartScene.swift */,
+				BCD07C981F0405430040D9C4 /* ShopScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				BC07BE051EF810F600CA9C97 /* Edge.swift in Sources */,
 				BC7973FB1EF0136300E6948A /* GameScene.swift in Sources */,
 				BC07BDFF1EF2E2BB00CA9C97 /* HUD.swift in Sources */,
+				BCD07C991F0405430040D9C4 /* ShopScene.swift in Sources */,
 				BC86F54C1EF023790018CC06 /* EncounterManager.swift in Sources */,
 				BC07BE091EF8163400CA9C97 /* StartScene.swift in Sources */,
 				BCC7FF1D1EF1914000557A8D /* Spike.swift in Sources */,

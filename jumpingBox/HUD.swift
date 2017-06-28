@@ -10,10 +10,12 @@ class HUD: SKNode {
   let scoreTable = Button()
   let restartButton = Button()
   let restartLabel = SKLabelNode(text: "Restart")
-  let newLifeBackground = Button()
-  let newLife = SKSpriteNode(texture: SKTextureAtlas(named:"HUD").textureNamed("heart"), color: .clear, size: CGSize(width: 40, height: 40))
+  let newLifeButton = Button()
+  let newLifeHeart = SKSpriteNode(texture: SKTextureAtlas(named:"HUD").textureNamed("heart"), color: .clear, size: CGSize(width: 40, height: 40))
   let newLifeLabel = SKLabelNode(text: "25")
   let newLifeCoin = SKSpriteNode(texture: SKTextureAtlas(named:"Environment").textureNamed("coin"), color: .clear, size: CGSize(width: 15, height: 15))
+  let shopButton = Button()
+  let shopLabel = SKLabelNode(text: "Shop")
   
   func createHudNodes(screenSize: CGSize) {
     pauseButton.name = "pauseGame"
@@ -92,23 +94,13 @@ class HUD: SKNode {
     scoreLabel.zPosition = 5
     self.addChild(scoreLabel)
     
-    coinIcon.size = CGSize(width: 30, height: 30)
-    coinIcon.position = CGPoint(x: highscoreLabel.frame.minX + (coinIcon.frame.width / 2), y: scoreLabel.frame.minY - 40)
-    coinIcon.zPosition = 5
-    self.addChild(coinIcon)
+    newLifeHeart.position = CGPoint(x: restartButton.frame.maxX + 50, y: restartButton.frame.midY + 10)
+    newLifeHeart.name = "newLife"
+    newLifeHeart.zPosition = 5
+    wiggleAction(newLifeHeart)
+    self.addChild(newLifeHeart)
     
-    coinCountLabel.fontSize = fontSizeMedium
-    coinCountLabel.position = CGPoint(x: coinIcon.frame.maxX + 15, y: coinIcon.frame.midY)
-    coinCountLabel.zPosition = 5
-    self.addChild(coinCountLabel)
-    
-    newLife.position = CGPoint(x: restartButton.frame.maxX + 50, y: restartButton.frame.midY + 10)
-    newLife.name = "newLife"
-    newLife.zPosition = 5
-    wiggleAction(newLife)
-    self.addChild(newLife)
-    
-    newLifeCoin.position = CGPoint(x: newLife.frame.minX + 5, y: newLife.frame.minY - 10)
+    newLifeCoin.position = CGPoint(x: newLifeHeart.frame.minX + 5, y: newLifeHeart.frame.minY - 10)
     newLifeCoin.name = "newLife"
     newLifeCoin.zPosition = 5
     self.addChild(newLifeCoin)
@@ -121,11 +113,37 @@ class HUD: SKNode {
     newLifeLabel.zPosition = 5
     self.addChild(newLifeLabel)
     
-    newLifeBackground.name = "newLife"
-    newLifeBackground.size = CGSize(width: 70, height: 70)
-    newLifeBackground.position = CGPoint(x: newLife.frame.midX, y: newLife.frame.midY - 10)
-    newLifeBackground.zPosition = 4
-    self.addChild(newLifeBackground)
+    newLifeButton.name = "newLife"
+    newLifeButton.size = CGSize(width: 70, height: 70)
+    newLifeButton.position = CGPoint(x: newLifeHeart.frame.midX, y: newLifeHeart.frame.midY - 10)
+    newLifeButton.zPosition = 4
+    self.addChild(newLifeButton)
+    
+    coinIcon.name = "shop"
+    coinIcon.size = CGSize(width: 20, height: 20)
+    coinIcon.position = CGPoint(x: restartButton.frame.minX - 70, y: restartButton.frame.midY + 10)
+    coinIcon.zPosition = 5
+    self.addChild(coinIcon)
+    
+    coinCountLabel.name = "shop"
+    coinCountLabel.fontSize = fontSizeSmall
+    coinCountLabel.position = CGPoint(x: coinIcon.frame.maxX + 5, y: coinIcon.frame.midY)
+    coinCountLabel.zPosition = 5
+    self.addChild(coinCountLabel)
+    
+    shopButton.name = "shop"
+    shopButton.size = CGSize(width: 70, height: 70)
+    shopButton.position = CGPoint(x: coinIcon.frame.midX + 20, y: coinIcon.frame.midY - 10)
+    shopButton.zPosition = 4
+    self.addChild(shopButton)
+    
+    shopLabel.name = "shop"
+    shopLabel.fontName = font
+    shopLabel.fontSize = fontSizeTiny
+    shopLabel.position = CGPoint(x: shopButton.frame.midX, y: coinIcon.frame.minY - 20)
+    shopLabel.verticalAlignmentMode = .center
+    shopLabel.zPosition = 5
+    self.addChild(shopLabel)
   }
   
   func pulseAction(_ node: SKSpriteNode) {

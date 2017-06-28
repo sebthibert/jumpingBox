@@ -2,8 +2,6 @@ import SpriteKit
 import GameplayKit
 
 class StartScene: SKScene {
-  var buttonAtlas = SKTextureAtlas(named: "HUD")
-  var playerAtlas = SKTextureAtlas(named: "Player")
   let titleLabel = SKLabelNode(text: "JUMBOX!")
   let startButton = Button()
   let startLabel = SKLabelNode(text: "Start")
@@ -41,12 +39,12 @@ class StartScene: SKScene {
   }
   
   func jumpAction() {
-    let jumpTexture = SKAction.setTexture(playerAtlas.textureNamed("square-jump"))
+    let jumpTexture = SKAction.setTexture(SKTextureAtlas(named: "Player").textureNamed("square-jump"))
     let upAction = SKAction.moveTo(y: player.position.y + 60, duration: 0.25)
     let downAction = SKAction.moveTo(y: -25, duration: 0.25)
     let bounceUp = SKAction.moveTo(y: player.position.y + 8, duration: 0.1)
     let bounceDown = SKAction.moveTo(y: -25, duration: 0.07)
-    let landTexture = SKAction.setTexture(playerAtlas.textureNamed("square"))
+    let landTexture = SKAction.setTexture(SKTextureAtlas(named: "Player").textureNamed("square"))
     let wait = SKAction.wait(forDuration: 4)
     let jumpSequence = SKAction.sequence([jumpTexture, upAction, downAction, bounceUp, bounceDown, landTexture, wait])
     player.run(SKAction.repeatForever(jumpSequence))

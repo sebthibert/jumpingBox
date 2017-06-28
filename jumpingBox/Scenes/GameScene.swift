@@ -58,6 +58,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else {
           hud.notEnoughCoins()
         }
+      } else if nodeTouched.name == "shop" {
+        self.view?.presentScene(ShopScene(size: self.size))
       } else {
         if player.physicsBody?.velocity.dy != 0 { return }
         player.jump()
