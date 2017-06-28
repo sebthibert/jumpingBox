@@ -8,7 +8,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   let hud = HUD()
   let encounterManager = EncounterManager()
   let cam = SKCameraNode()
-  let initialPlayerPosition = CGPoint(x: 75, y: 200)
+  let initialPlayerPosition = CGPoint(x: 75, y: 400)
   var nextEncounterSpawnPosition = CGFloat(150)
   
   override func didMove(to view: SKView) {
@@ -25,6 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     if !newLife { player.position = initialPlayerPosition } else { player.position = playerDeathPosition }
     self.addChild(player)
+    player.rotateAction()
     
     self.camera = cam
     self.addChild(self.camera!)

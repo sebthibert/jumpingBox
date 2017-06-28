@@ -30,12 +30,16 @@ class Player: SKSpriteNode {
   
   func jump() {
     self.physicsBody?.velocity.dy = self.jumpVelocity
+    rotateAction()
+  }
+  
+  func rotateAction() {
     let rotateAction = SKAction.rotate(byAngle: CGFloat(-.pi/0.5), duration: 0.6)
     self.run(rotateAction)
   }
   
   func die() {
-    playerDeathPosition = self.position
+    playerDeathPosition = CGPoint(x: self.position.x, y: 400)
     dead = true
     self.texture = textureAtlas.textureNamed("square-dead")
     self.physicsBody?.velocity.dx = 0
