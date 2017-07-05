@@ -25,23 +25,13 @@ class Player: SKSpriteNode {
   
   func die() {
     playerDeathPosition = CGPoint(x: self.position.x, y: 400)
+    playerDeathVelocity = self.forwardVelocity
     dead = true
     self.texture = textureAtlas.textureNamed("square-dead")
     self.physicsBody?.velocity.dx = 0
     self.physicsBody?.velocity.dy = self.dieUpwardVelocity
     self.physicsBody?.collisionBitMask = 0
     setHighscoreAndCoinsCollected()
-    
-  }
-  
-  func setHighscoreAndCoinsCollected() {
-    if playerProgress / 100 > highScore {
-      UserDefaults.standard.set(playerProgress / 100, forKey:"HighScore")
-      UserDefaults.standard.synchronize()
-    }
-    
-    UserDefaults.standard.set(coinsCollected, forKey: "CoinsCollected")
-    UserDefaults.standard.synchronize()
   }
   
   func rotateAction() {
@@ -51,7 +41,9 @@ class Player: SKSpriteNode {
   
   func update() {
     if dead { return }
+    if resuming { self.forwardVelocity = playerDeathVelocity }
     self.physicsBody?.allowsRotation = false
+    self.forwardVelocity = self.forwardVelocity * 1.00005
     self.physicsBody?.velocity.dx = self.forwardVelocity
     
     if self.physicsBody?.velocity.dy != 0 {
