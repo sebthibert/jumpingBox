@@ -121,12 +121,12 @@ class HUD: SKNode {
     
     coinIcon.name = "shop"
     coinIcon.size = CGSize(width: 20, height: 20)
-    coinIcon.position = CGPoint(x: restartButton.frame.minX - 70, y: restartButton.frame.midY + 10)
+    coinIcon.position = CGPoint(x: restartButton.frame.minX - 67, y: restartButton.frame.midY + 10)
     coinIcon.zPosition = 5
     self.addChild(coinIcon)
     
     coinCountLabel.name = "shop"
-    coinCountLabel.fontSize = fontSizeSmall
+    coinCountLabel.fontSize = fontSizeTiny
     coinCountLabel.position = CGPoint(x: coinIcon.frame.maxX + 5, y: coinIcon.frame.midY)
     coinCountLabel.zPosition = 5
     self.addChild(coinCountLabel)
